@@ -1,4 +1,4 @@
 package com.Facility;
 
-public class TEST1 {
+public class facility {
 }
