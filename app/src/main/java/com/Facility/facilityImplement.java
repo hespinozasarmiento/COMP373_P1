@@ -1,4 +1,23 @@
 package com.Facility;
 
-public class facilityImplement {
+public class facilityImplement implements facility
+{
+    private int facilityID;
+    private FacilityDetails facilityDetail;
+
+    public FacilityImpl() {}
+
+    //getting and setting
+    public FacilityDetails getFacilityDetail() {
+        return facilityDetail;
+    }
+    public void setFacilityDetail(FacilityDetails facilityDetail) {
+        this.facilityDetail = facilityDetail;
+    }
+    public void setFacilityID(int facilityID) {
+        this.facilityID = facilityID;
+    }
+    public int getFacilityID() {
+        return facilityID;
+    }
 }
