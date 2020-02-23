@@ -1,9 +1,9 @@
 package com.Client;
 
 import java.util.List;
-import com.fms.main.*;
-import com.fms.maintenance.Maintenance;
-import com.fms.services.MaintenanceService;
+import com.Facility.*;
+import com.Maintenance.maintenance;
+import com.Service.serviceMaintenance;
 
 public class maintenanceClient {
     public class MaintenanceClient {

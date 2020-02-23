@@ -1,8 +1,8 @@
 package com.Client;
 
 import java.util.List;
-import com.fms.main.*;
-import com.fms.services.*;
+import com.Facility.*;
+import com.Service.*;
 
 public class facilityClient
 {

@@ -1,9 +1,9 @@
 package com.Client;
 
 import java.util.List;
-import com.fms.main.*;
-import com.fms.services.*;
-import com.fms.usage.*;
+import com.Facility.*;
+import com.service.*;
+import com.Use.*;
 import java.time.LocalDate;
 
 public class useClient
