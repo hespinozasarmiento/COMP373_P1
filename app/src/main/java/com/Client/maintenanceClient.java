@@ -5,12 +5,9 @@ import com.fms.main.*;
 import com.fms.maintenance.Maintenance;
 import com.fms.services.MaintenanceService;
 
-public class maintenanceClient
-{
-        public class MaintenanceClient
-        {
-            public MaintenanceClient() throws Exception
-            {
+public class maintenanceClient {
+    public class MaintenanceClient {
+        public MaintenanceClient() throws Exception {
 
             MaintenanceService maintenanceService = new MaintenanceService();
 
@@ -73,9 +70,9 @@ public class maintenanceClient
             System.out.println("\nMaintenanceClient: Listing the Current Maintenance Requests at Facility");
             List<Maintenance> maintRequestList = maintenanceService.listMaintRequests(office2);
             Object[][] requests = new Object[maintRequestList.size() + 1][2];
-            requests[0] = new Object[] {"Maintenance Request Details", "Cost"};
+            requests[0] = new Object[]{"Maintenance Request Details", "Cost"};
             for (int i = 1; i <= maintRequestList.size(); i++) {
-                requests[i] = new Object[] {maintRequestList.get(i-1).getMaintenanceDetails(), maintRequestList.get(i-1).getCost()};
+                requests[i] = new Object[]{maintRequestList.get(i - 1).getMaintenanceDetails(), maintRequestList.get(i - 1).getCost()};
             }
             System.out.println("Current Maintenance Requests at Facility #" + office2.getFacilityID() + ":");
             for (Object[] row : requests) {
@@ -86,9 +83,9 @@ public class maintenanceClient
             System.out.println("\nMaintenanceClient: Listing Completed Maintenance Requests at Facility");
             List<Maintenance> maintenanceList = maintenanceService.listMaintenance(office2);
             Object[][] maintenanceTable = new Object[maintenanceList.size() + 1][2];
-            maintenanceTable[0] = new Object[] {"Maintenance Details", "Cost"};
+            maintenanceTable[0] = new Object[]{"Maintenance Details", "Cost"};
             for (int i = 1; i <= maintenanceList.size(); i++) {
-                maintenanceTable[i] = new Object[] {maintenanceList.get(i-1).getMaintenanceDetails(), maintenanceList.get(i-1).getCost()};
+                maintenanceTable[i] = new Object[]{maintenanceList.get(i - 1).getMaintenanceDetails(), maintenanceList.get(i - 1).getCost()};
             }
             System.out.println("Completed Maintenance Requests at Facility #" + office2.getFacilityID() + ":");
             for (Object[] row : maintenanceTable) {
@@ -99,9 +96,9 @@ public class maintenanceClient
             System.out.println("\nMaintenanceClient: Listing Problems Affecting the Facility");
             List<Maintenance> facilityProblemsList = maintenanceService.listFacilityProblems(office2);
             Object[][] problems = new Object[facilityProblemsList.size() + 1][2];
-            problems[0] = new Object[] {"Problem Details", "Cost"};
+            problems[0] = new Object[]{"Problem Details", "Cost"};
             for (int i = 1; i <= facilityProblemsList.size(); i++) {
-                problems[i] = new Object[] {facilityProblemsList.get(i-1).getMaintenanceDetails(), facilityProblemsList.get(i-1).getCost()};
+                problems[i] = new Object[]{facilityProblemsList.get(i - 1).getMaintenanceDetails(), facilityProblemsList.get(i - 1).getCost()};
             }
             System.out.println("Problems affecting Facility #" + office2.getFacilityID() + ":");
             for (Object[] row : problems) {
@@ -122,4 +119,5 @@ public class maintenanceClient
             System.out.print("%.");
         }
 
+    }
 }
