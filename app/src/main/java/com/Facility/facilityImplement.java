@@ -5,9 +5,9 @@ public class facilityImplement implements facility
     private int facilityID;
     private FacilityDetails facilityDetail;
 
-    public FacilityImpl() {}
+    //public FacilityImpl() {}
 
-    //getting and setting
+    //getters and setters
     public FacilityDetails getFacilityDetail() {
         return facilityDetail;
     }

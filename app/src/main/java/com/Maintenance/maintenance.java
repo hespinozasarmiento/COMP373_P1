@@ -1,6 +1,6 @@
 package com.Maintenance;
 
-import com.fms.main.Facility;
+import com.Facility.facility;
 
 public interface maintenance
 {

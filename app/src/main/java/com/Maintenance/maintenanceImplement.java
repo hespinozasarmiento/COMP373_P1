@@ -1,6 +1,6 @@
 package com.Maintenance;
 
-import com.fms.main.Facility;
+import com.Facility.facility;
 
 public class maintenanceImplement implements maintenance
 {
@@ -11,7 +11,7 @@ public class maintenanceImplement implements maintenance
         private int cost;
         private Facility facility;
 
-        public MaintenanceImpl() {}
+        public maintenanceImplement() {}
 
         //getting and setting
         public int getMaintenanceID() {
