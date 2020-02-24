@@ -2,11 +2,11 @@ package com.Use;
 
 import com.Facility.facility;
 
-public class facilityInspect
+public interface facilityInspect
 {
     //declaring getting and setting
-    public facility getfacility();
-    public void setFacility(Facility facility);
+    public facility getFacility();
+    public void setFacility(facility facility);
     public int getFacilityID();
     public void setFacilityID(int facility_ID);
     public String getInspect_type();

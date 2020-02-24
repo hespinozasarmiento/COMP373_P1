@@ -13,10 +13,10 @@ public class facilityUseImplement implements facilityUse{
 
     public facilityUseImplement() {}
 
-    public facility getfacility() {
+    public facility getFacility() {
         return facility;
     }
-    public void setfacility(facility facility) {
+    public void setFacility(facility facility) {
         this.facility = facility;
     }
     public int getUseID() {

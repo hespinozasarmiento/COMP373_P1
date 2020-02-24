@@ -13,7 +13,7 @@ public class facilityInspectionImplement implements facilityInspect
     public facilityInspectionImplement() {}
 
     //getting and setting
-    public facility getfacility() {
+    public facility getFacility() {
         return facility;
     }
     public void setFacility(facility facility) {

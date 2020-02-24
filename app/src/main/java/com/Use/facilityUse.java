@@ -3,11 +3,11 @@ package com.Use;
 import com.Facility.facility;
 import java.time.LocalDate;
 
-public class facilityUse
+public interface facilityUse
 {
     //declaring getting and setting
     public void setFacility(facility facility);
-    public facility getfacility();
+    public facility getFacility();
     public int getUseID();
     public void setUseID(int useID);
     public int getFacilityID();
