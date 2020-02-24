@@ -1,161 +1,161 @@
-package com.Service;
-
-     import com.Database.useDatabase;
-     import com.Use.*;
-     import com.Facility.*;
-     import java.util.List;
-     import java.time.*;
-
-public class serviceUse {
-
-    private useDatabase useDatabase = new useDatabase();
-
-    //generates a list of inspections at a given Facility
-    public List<facilityInspect> listInspections(facility facility) {
-        try {
-            return useDatabase.listInspections(facility);
-        } catch (Exception se) {
-            System.err.println("UseService: Threw an Exception retrieving list of inspections.");
-            System.err.println(se.getMessage());
-        }
-        return null;
-    }
-
-    //checks if a Facility is in use during a given interval
-    public boolean isInUseDuringInterval(Facility facility, FacilityUse facilityUse) {
-        //checks for a valid start date
-        if (facilityUse.getStartDate().isAfter(facilityUse.getEndDate())) {
-            System.out.println("The start date cannot be after the end date.");
-            //checks for a valid number of rooms
-        } else if (facilityUse.getRoomNumber() > facility.getFacilityDetail().getNumberOfRooms()) {
-            System.out.println("Invalid room number. There are only " +
-                    facility.getFacilityDetail().getNumberOfRooms() +
-                    " rooms at this facility.");
-        } else {
-            try {
-                return useDatabase.isInUseDuringInterval(facilityUse);
-            } catch (Exception se) {
-                System.err.println("UseService: Threw an Exception checking if facility is in use during interval.");
-                System.err.println(se.getMessage());
-            }
-        }
-        return true;
-    }
-
-    //generates list of usage at a given Facility
-    public List<FacilityUse> listActualUsage(Facility facility) {
-        try {
-            return useDatabase.listActualUsage(facility);
-        } catch (Exception se) {
-            System.err.println("UseService: Threw an Exception retrieving list of usage.");
-            System.err.println(se.getMessage());
-        }
-        return null;
-    }
-
-    //assigns a room number at a given Facility to use
-    public void assignFacilityToUse(Facility facility, FacilityUse facilityUse) {
-        //check if the start date is valid
-        if (facilityUse.getStartDate().isAfter(facilityUse.getEndDate())) {
-            System.out.println("The start date cannot be after the end date.");
-            //check if the room number is valid
-        } else if (facilityUse.getRoomNumber() > facility.getFacilityDetail().getNumberOfRooms()) {
-            System.out.println("Invalid room number. There are only " +
-                    facility.getFacilityDetail().getNumberOfRooms() +
-                    " rooms at this facility.");
-            //check if given room is already in use during interval
-        } else if (isInUseDuringInterval(facility, facilityUse)) {
-            System.out.println("This room is already in use during this interval.");
-        } else {
-            try {
-                useDatabase.assignFacilityToUse(facilityUse);
-            } catch (Exception se) {
-                System.err.println("UseService: Threw an Exception assigning a facility to use.");
-                System.err.println(se.getMessage());
-            }
-        }
-    }
-
-    //Returns the date on which a given Facility was started
-    public LocalDate getFacilityStartDate(Facility facility) {
-        try {
-            return useDatabase.getFacilityStartDate(facility);
-        } catch (Exception se) {
-            System.err.println("UseService: Threw an Exception retrieving the facility start date.");
-            System.err.println(se.getMessage());
-        }
-        return null;
-    }
-
-    //vacates a room at a given Facility, if it is currently in use
-    public void vacateFacility(Facility facility, int roomNumber) {
-        try {
-            List<FacilityUse> usageList = listActualUsage(facility);
-            //check if room number is valid
-            if (roomNumber > facility.getFacilityDetail().getNumberOfRooms()) {
-                System.out.println("Invalid room number. There are only " +
-                        facility.getFacilityDetail().getNumberOfRooms() + " rooms at this facility.");
-            } else {
-                for (FacilityUse use : usageList) {
-                    //check if room is in use
-                    if (use.getRoomNumber() == 0 || (use.getRoomNumber() == roomNumber))  {
-                        if ((LocalDate.now().equals(use.getStartDate())) || LocalDate.now().isAfter(use.getStartDate())) {
-                            //if room is in use, vacate, else print vacate denial message
-                            if ((LocalDate.now().equals(use.getEndDate())) || (LocalDate.now().isBefore(use.getEndDate()))) {
-                                useDatabase.vacateFacility(facility, roomNumber);
-                            }
-                        } else {
-                            System.out.println("This room is not in use. Vacate request denied.");
-                        }
-                    }
-                }
-            }
-        }
-        catch (Exception se) {
-            System.err.println("UseService: Threw an Exception vacating a facility.");
-            System.err.println(se.getMessage());
-        }
-    }
-
-    //calculate usage of a given Facility
-    public double calcUsageRate(Facility facility) {
-        try {
-            FacilityService facilityService = new FacilityService();
-            int totalRooms = facility.getFacilityDetail().getNumberOfRooms();
-            int roomsAvailable = requestAvailableCapacity(facility);
-            int roomsInUse = totalRooms - roomsAvailable;
-            return Math.round(((double)roomsInUse / totalRooms) * 100d)/100d;
-        } catch (Exception se) {
-            System.err.println("UseService: Threw an Exception retrieving list of usage for calculating the usage rate.");
-            System.err.println(se.getMessage());
-        }
-        return 0.00;
-    }
-
-    //generates list of available Facilities by rooms in use
-    public int requestAvailableCapacity(Facility facility) {
-
-        try {
-            List<FacilityUse> usage = useDatabase.listActualUsage(facility);
-            int roomsInUse = 0;
-            if (usage.size() > 0) {
-                for (FacilityUse facUse : usage) {
-                    //if Facility is currently in use,
-                    if ((LocalDate.now().equals(facUse.getStartDate()) || LocalDate.now().isAfter(facUse.getStartDate())) &
-                            LocalDate.now().equals(facUse.getEndDate()) || LocalDate.now().isBefore(facUse.getEndDate())) {
-                        if (facUse.getRoomNumber() == 0) {
-                            return 0;
-                        } else {
-                            roomsInUse = roomsInUse + 1;
-                        }
-                    }
-                }
-            }
-            return facility.getFacilityDetail().getNumberOfRooms() - roomsInUse;
-        } catch (Exception se) {
-            System.err.println("UseService: Threw an Exception requesting the available capacity of a facility.");
-            System.err.println(se.getMessage());
-        }
-        return 0;
-    }
-}
+//package com.Service;
+//
+//     import com.Database.useDatabase;
+//     import com.Use.*;
+//     import com.Facility.*;
+//     import java.util.List;
+//     import java.time.*;
+//
+//public class serviceUse {
+//
+//    private useDatabase useDatabase = new useDatabase();
+//
+//    //generates a list of inspections at a given Facility
+//    public List<facilityInspect> listInspections(facility facility) {
+//        try {
+//            return useDatabase.listInspections(facility);
+//        } catch (Exception se) {
+//            System.err.println("UseService: Threw an Exception retrieving list of inspections.");
+//            System.err.println(se.getMessage());
+//        }
+//        return null;
+//    }
+//
+//    //checks if a Facility is in use during a given interval
+//    public boolean isInUseDuringInterval(facility facility, facilityUse facilityUse) {
+//        //checks for a valid start date
+//        if (facilityUse.getStartDate().isAfter(facilityUse.getEndDate())) {
+//            System.out.println("The start date cannot be after the end date.");
+//            //checks for a valid number of rooms
+//        } else if (facilityUse.getRoomNumber() > facility.getFacilityDetail().getNumberOfRooms()) {
+//            System.out.println("Invalid room number. There are only " +
+//                    facility.getFacilityDetail().getNumberOfRooms() +
+//                    " rooms at this facility.");
+//        } else {
+//            try {
+//                return useDatabase.isInUseDuringInterval(facilityUse);
+//            } catch (Exception se) {
+//                System.err.println("UseService: Threw an Exception checking if facility is in use during interval.");
+//                System.err.println(se.getMessage());
+//            }
+//        }
+//        return true;
+//    }
+//
+//    //generates list of usage at a given Facility
+//    public List<facilityUse> listActualUsage(facility facility) {
+//        try {
+//            return useDatabase.listActualUsage(facility);
+//        } catch (Exception se) {
+//            System.err.println("UseService: Threw an Exception retrieving list of usage.");
+//            System.err.println(se.getMessage());
+//        }
+//        return null;
+//    }
+//
+//    //assigns a room number at a given Facility to use
+//    public void assignFacilityToUse(facility facility, facilityUse facilityUse) {
+//        //check if the start date is valid
+//        if (facilityUse.getStartDate().isAfter(facilityUse.getEndDate())) {
+//            System.out.println("The start date cannot be after the end date.");
+//            //check if the room number is valid
+//        } else if (facilityUse.getRoomNumber() > facility.getFacilityDetail().getNumberOfRooms()) {
+//            System.out.println("Invalid room number. There are only " +
+//                    facility.getFacilityDetail().getNumberOfRooms() +
+//                    " rooms at this facility.");
+//            //check if given room is already in use during interval
+//        } else if (isInUseDuringInterval(facility, facilityUse)) {
+//            System.out.println("This room is already in use during this interval.");
+//        } else {
+//            try {
+//                useDatabase.assignFacilityToUse(facilityUse);
+//            } catch (Exception se) {
+//                System.err.println("UseService: Threw an Exception assigning a facility to use.");
+//                System.err.println(se.getMessage());
+//            }
+//        }
+//    }
+//
+//    //Returns the date on which a given Facility was started
+//    public LocalDate getFacilityStartDate(facility facility) {
+//        try {
+//            return useDatabase.getFacilityStartDate(facility);
+//        } catch (Exception se) {
+//            System.err.println("UseService: Threw an Exception retrieving the facility start date.");
+//            System.err.println(se.getMessage());
+//        }
+//        return null;
+//    }
+//
+//    //vacates a room at a given Facility, if it is currently in use
+//    public void vacateFacility(facility facility, int roomNumber) {
+//        try {
+//            List<facilityUse> usageList = listActualUsage(facility);
+//            //check if room number is valid
+//            if (roomNumber > facility.getFacilityDetail().getNumberOfRooms()) {
+//                System.out.println("Invalid room number. There are only " +
+//                        facility.getFacilityDetail().getNumberOfRooms() + " rooms at this facility.");
+//            } else {
+//                for (facilityUse use : usageList) {
+//                    //check if room is in use
+//                    if (use.getRoomNumber() == 0 || (use.getRoomNumber() == roomNumber))  {
+//                        if ((LocalDate.now().equals(use.getStartDate())) || LocalDate.now().isAfter(use.getStartDate())) {
+//                            //if room is in use, vacate, else print vacate denial message
+//                            if ((LocalDate.now().equals(use.getEndDate())) || (LocalDate.now().isBefore(use.getEndDate()))) {
+//                                useDatabase.vacateFacility(facility, roomNumber);
+//                            }
+//                        } else {
+//                            System.out.println("This room is not in use. Vacate request denied.");
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//        catch (Exception se) {
+//            System.err.println("UseService: Threw an Exception vacating a facility.");
+//            System.err.println(se.getMessage());
+//        }
+//    }
+//
+//    //calculate usage of a given Facility
+//    public double calcUsageRate(facility facility) {
+//        try {
+//            serviceFacility facilityService = new serviceFacility();
+//            int totalRooms = facility.getFacilityDetail().getNumberOfRooms();
+//            int roomsAvailable = requestAvailableCapacity(facility);
+//            int roomsInUse = totalRooms - roomsAvailable;
+//            return Math.round(((double)roomsInUse / totalRooms) * 100d)/100d;
+//        } catch (Exception se) {
+//            System.err.println("UseService: Threw an Exception retrieving list of usage for calculating the usage rate.");
+//            System.err.println(se.getMessage());
+//        }
+//        return 0.00;
+//    }
+//
+//    //generates list of available Facilities by rooms in use
+//    public int requestAvailableCapacity(facility facility) {
+//
+//        try {
+//            List<facilityUse> usage = useDatabase.listActualUsage(facility);
+//            int roomsInUse = 0;
+//            if (usage.size() > 0) {
+//                for (facilityUse facUse : usage) {
+//                    //if Facility is currently in use,
+//                    if ((LocalDate.now().equals(facUse.getStartDate()) || LocalDate.now().isAfter(facUse.getStartDate())) &
+//                            LocalDate.now().equals(facUse.getEndDate()) || LocalDate.now().isBefore(facUse.getEndDate())) {
+//                        if (facUse.getRoomNumber() == 0) {
+//                            return 0;
+//                        } else {
+//                            roomsInUse = roomsInUse + 1;
+//                        }
+//                    }
+//                }
+//            }
+//            return facility.getFacilityDetail().getNumberOfRooms() - roomsInUse;
+//        } catch (Exception se) {
+//            System.err.println("UseService: Threw an Exception requesting the available capacity of a facility.");
+//            System.err.println(se.getMessage());
+//        }
+//        return 0;
+//    }
+//}
