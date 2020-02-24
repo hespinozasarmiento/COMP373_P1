@@ -14,47 +14,47 @@ public class facilityClient
          * Adding office locations for facilities.
          */
 
-        //office1
-        Facility office1 = new FacilityImpl();
-        FacilityDetails office1Details = new FacilityDetailsImpl();
-        office1.setFacilityID(1);
-        office1Details.setName("Anissa Corporations");
-        office1Details.setLocation("Chicago, IL");
-        office1Details.setNumberOfRooms(10);
-        office1.setFacilityDetail(office1Details);
+                //office1
+                facility office1 = new facilityImplement();
+                facilityInfo office1Details = new facilityInfoImplement();
+                office1.setFacilityID(1);
+                office1Details.setName("Anissa Corporations");
+                office1Details.setLocation("Chicago, IL");
+                office1Details.setNumberOfRooms(10);
+                office1.setFacilityDetail(office1Details);
 
-        //office2
-        Facility office2 = new FacilityImpl();
-        FacilityDetails office2Details = new FacilityDetailsImpl();
-        office2.setFacilityID(2);
-        office2Details.setName("Irfan & Associates");
-        office2Details.setLocation("Milwaukee, WI");
-        office2Details.setNumberOfRooms(20);
-        office2.setFacilityDetail(office2Details);
+                //office2
+                facility office2 = new facilityImplement();
+                facilityInfo office2Details = new facilityInfoImplement();
+                office2.setFacilityID(2);
+                office2Details.setName("Irfan & Associates");
+                office2Details.setLocation("Milwaukee, WI");
+                office2Details.setNumberOfRooms(20);
+                office2.setFacilityDetail(office2Details);
 
-        //office3
-        Facility office3 = new FacilityImpl();
-        FacilityDetails office3Details = new FacilityDetailsImpl();
-        office3.setFacilityID(3);
-        office3Details.setName("Henry Inc.");
-        office3Details.setLocation("New York, NY");
-        office3Details.setNumberOfRooms(30);
-        office3.setFacilityDetail(office3Details);
+                //office3
+                facility office3 = new facilityImplement();
+                facilityInfo office3Details = new facilityInfoImplement();
+                office3.setFacilityID(3);
+                office3Details.setName("Henry Inc.");
+                office3Details.setLocation("New York, NY");
+                office3Details.setNumberOfRooms(30);
+                office3.setFacilityDetail(office3Details);
 
-        //office4
-        Facility office4 = new FacilityImpl();
-        FacilityDetails office4Details = new FacilityDetailsImpl();
-        office4.setFacilityID(4);
-        office4Details.setName("Zewdie Firm");
-        office4Details.setLocation("San Francisco, CA");
-        office4Details.setNumberOfRooms(40);
-        office4.setFacilityDetail(office4Details);
+                //office4
+                facility office4 = new facilityImplement();
+                facilityInfo office4Details = new facilityInfoImplement();
+                office4.setFacilityID(4);
+                office4Details.setName("Zewdie Firm");
+                office4Details.setLocation("San Francisco, CA");
+                office4Details.setNumberOfRooms(40);
+                office4.setFacilityDetail(office4Details);
 
         //building office5
         System.out.println("\nFacilityClient: Now building a new Facility.");
-        Facility office5 = new FacilityImpl();
+        facility office5 = new FacilityImpl();
         office5.setFacilityID(5);
-        FacilityDetails detail = new FacilityDetailsImpl();
+        facilityInfo detail = new facilityInfoImplement();
         detail.setName("John Doe Company");
         detail.setLocation("Seattle, WA");
         detail.setNumberOfRooms(50);
@@ -67,7 +67,7 @@ public class facilityClient
 
         System.out.println("\nFacilityClient: Facility Information");
         System.out.println("\n\tFacility ID:   \t\t" + searchedFacility.getFacilityID());
-        FacilityDetails facilityDet = searchedFacility.getFacilityDetail();
+        facilityInfo facilityInfo = searchedFacility.getFacilityDetail();
         System.out.println("\tInformation About Facility:  \t" + facilityDet.getName() +
                 "\n\t\t\t\t Number of Rooms:" + facilityDet.getNumberOfRooms());
         if (facilityDet.getPhoneNumber() != 0) {
@@ -78,10 +78,10 @@ public class facilityClient
                     "\n\t\t\t\t" + "\n");
         }
 
-        //phone number being added to office5's FacilityDetails
+        //phone number being added to office5's facilityInfo
         facilityService.addFacilityDetail(5, 312555999);
         Facility updatedFacility = facilityService.getFacilityInformation(5);
-        FacilityDetails facilityNewDet = updatedFacility.getFacilityDetail();
+        facilityInfo facilityNewDet = updatedFacility.getFacilityDetail();
 
         System.out.println("\nFacilityClient: Facility Information has been updated.");
         System.out.println("\n\tFacility ID:   \t\t" + updatedFacility.getFacilityID());
@@ -103,7 +103,7 @@ public class facilityClient
         System.out.println("\nFacilityClient: List of current Facilities");
         List<Facility> listOfFacilities = facilityService.listFacilities();
         for (Facility fac : listOfFacilities) {
-            FacilityDetails facDet = fac.getFacilityDetail();
+                facilityInfo facDet = fac.getFacilityDetail();
             System.out.println("\n\t" + facDet.getName() + " ID: " + fac.getFacilityID());
         }
 
