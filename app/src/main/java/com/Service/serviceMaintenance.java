@@ -10,11 +10,11 @@ package com.Service;
 
 public class serviceMaintenance {
 
-    private MaintenanceDAO maintenanceDAO = new MaintenanceDAO();
+    private maintenanceDatabase maintenanceDatabase = new maintenanceDatabase();
 
     public Maintenance makeFacilityMaintRequest(Facility facility, String maintenanceDetails, int cost) {
         try {
-            return maintenanceDAO.makeFacilityMaintRequest(facility, maintenanceDetails, cost);
+            return maintenanceDatabase.makeFacilityMaintRequest(facility, maintenanceDetails, cost);
         } catch (Exception se) {
             System.err.println("MaintenanceService: Threw an Exception making a "
                     + "maintenance request.");
@@ -25,7 +25,7 @@ public class serviceMaintenance {
 
     public void scheduleMaintenance(Maintenance maintenanceRequest) {
         try {
-            maintenanceDAO.scheduleMaintenance(maintenanceRequest);
+            maintenanceDatabase.scheduleMaintenance(maintenanceRequest);
         } catch (Exception se) {
             System.err.println("MaintenanceService: Threw an Exception scheduling maintenance.");
             System.err.println(se.getMessage());
@@ -34,7 +34,7 @@ public class serviceMaintenance {
 
     public int calcMaintenanceCostForFacility(Facility facility) {
         try {
-            return maintenanceDAO.calcMaintenanceCostForFacility(facility);
+            return maintenanceDatabase.calcMaintenanceCostForFacility(facility);
         } catch (Exception se) {
             System.err.println("MaintenanceService: Threw an Exception calculating "
                     + "maintenance cost for facility.");
@@ -48,7 +48,7 @@ public class serviceMaintenance {
         int daysOfDownTime = 0;
         try {
             //assume each maintenance request takes one work week (5 days) to complete
-            int numberOfCompletedMaintItems = maintenanceDAO.listMaintenance(facility).size();
+            int numberOfCompletedMaintItems = maintenanceDatabase.listMaintenance(facility).size();
             daysOfDownTime = numberOfCompletedMaintItems * 5;
         } catch (Exception se) {
             System.err.println("MaintenanceService: Threw an Exception calculating "
@@ -75,7 +75,7 @@ public class serviceMaintenance {
 
     public List<Maintenance> listMaintRequests(Facility facility) {
         try {
-            return maintenanceDAO.listMaintRequests(facility);
+            return maintenanceDatabase.listMaintRequests(facility);
         } catch (Exception se) {
             System.err.println("MaintenanceService: Threw an Exception listing "
                     + "maintenance requests.");
@@ -86,7 +86,7 @@ public class serviceMaintenance {
 
     public List<Maintenance> listMaintenance(Facility facility) {
         try {
-            return maintenanceDAO.listMaintenance(facility);
+            return maintenanceDatabase.listMaintenance(facility);
         } catch (Exception se) {
             System.err.println("MaintenanceService: Threw an Exception listing "
                     + "completed maintenance.");
@@ -98,8 +98,8 @@ public class serviceMaintenance {
     public List<Maintenance> listFacilityProblems(Facility facility) {
         List<Maintenance> facilityProblems = new ArrayList<Maintenance>();
         try {
-            facilityProblems.addAll(maintenanceDAO.listMaintRequests(facility));
-            facilityProblems.addAll(maintenanceDAO.listMaintenance(facility));
+            facilityProblems.addAll(maintenanceDatabase.listMaintRequests(facility));
+            facilityProblems.addAll(maintenanceDatabase.listMaintenance(facility));
             return facilityProblems;
         } catch (Exception se) {
             System.err.println("MaintenanceService: Threw an Exception "

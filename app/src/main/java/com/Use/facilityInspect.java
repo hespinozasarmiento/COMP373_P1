@@ -1,18 +1,18 @@
 package com.Use;
 
-import com.Facility.facility;
+import com.facility.Facility;
 
-public interface FacilityInspection {
-
-    //declaring getters and setters
-    public Facility getFacility();
-    public void setFacility(Facility facility);
+public class facilityInspect
+{
+    //declaring getting and setting
+    public facility getfacility();
+    public void setfacility(facility facility);
     public int getFacilityID();
     public void setFacilityID(int facility_ID);
-    public String getInspection_type();
-    public void setInspection_type(String inspection_type);
-    public String getInspection_detail();
-    public void setInspection_detail(String inspection_detail);
-    public int getInspectionID();
-    public void setInspectionID(int inspectionID);
+    public String getInspect_type();
+    public void setInspect_type(String inspect_type);
+    public String getInspect_detail();
+    public void setInspect_detail(String inspect_detail);
+    public int getInspectID();
+    public void setInspectID(int inspectID);
 }

@@ -2,7 +2,7 @@ package com.Client;
 
 import java.util.List;
 import com.Facility.*;
-import com.service.*;
+import com.Service.*;
 import com.Use.*;
 import java.time.LocalDate;
 
@@ -10,16 +10,16 @@ public class useClient
 {
         public useClient() throws Exception {
 
-            UsageService useService = new UsageService();
-            FacilityService facilityService = new FacilityService();
+            useClient useClient = new useClient();
+            serviceFacility serviceFacility = new serviceFacility();
 
             /**
              *Adding office locations for facilities.
              */
 
             //office1
-            Facility office1 = new FacilityImpl();
-            FacilityDetails office1Details = new FacilityDetailsImpl();
+            facility office1 = new facilityImplement();
+            facilityInfo office1Details = new facilityInfoImplement();
             office1.setFacilityID(1);
             office1Details.setName("Anissa Corporations");
             office1Details.setLocation("Chicago, IL");
@@ -27,8 +27,8 @@ public class useClient
             office1.setFacilityDetail(office1Details);
 
             //office2
-            Facility office2 = new FacilityImpl();
-            FacilityDetails office2Details = new FacilityDetailsImpl();
+            facility office2 = new facilityImplement();
+            facilityInfo office2Details = new facilityInfoImplement();
             office2.setFacilityID(2);
             office2Details.setName("Irfan & Associates");
             office2Details.setLocation("Milwaukee, WI");
@@ -36,8 +36,8 @@ public class useClient
             office2.setFacilityDetail(office2Details);
 
             //office3
-            Facility office3 = new FacilityImpl();
-            FacilityDetails office3Details = new FacilityDetailsImpl();
+            facility office3 = new facilityImplement();
+            facilityInfo office3Details = new facilityInfoImplement();
             office3.setFacilityID(3);
             office3Details.setName("Henry Inc.");
             office3Details.setLocation("New York, NY");
@@ -45,8 +45,8 @@ public class useClient
             office3.setFacilityDetail(office3Details);
 
             //office4
-            Facility office4 = new FacilityImpl();
-            FacilityDetails office4Details = new FacilityDetailsImpl();
+            facility office4 = new facilityImplement();
+            facilityInfo office4Details = new facilityInfoImplement();
             office4.setFacilityID(4);
             office4Details.setName("Zewdie Firm");
             office4Details.setLocation("San Francisco, CA");
@@ -63,10 +63,10 @@ public class useClient
             }
 
             //office5 (new Facility) will be checked for usage interval
-            Facility office5 = new FacilityImpl();
-            FacilityUse officeUse = new FacilityUseImpl();;
+            facility office5 = new facilityImplement();
+            facilityInfo officeUse = new facilityInfoImplement();;
             officeUse.setFacilityID(5);
-            FacilityDetails officeDetails = new FacilityDetailsImpl();
+            facilityInfo officeDetails = new facilityInfoImplement();
             officeDetails.setNumberOfRooms(50);
             officeDetails.setName("John Doe Company");
             officeDetails.setLocation("Seattle, WA");

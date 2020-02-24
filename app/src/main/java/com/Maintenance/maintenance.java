@@ -6,10 +6,10 @@ public interface maintenance
 {
 
         //declaring getting and setting
-        public Facility getFacility();
-        public void setFacility(Facility facility);
-        public int getFacilityID();
-        public void setFacilityID(int facilityID);
+        public facility getfacility();
+        public void setfacility(facility facility);
+        public int getfacilityID();
+        public void setfacilityID(int facilityID);
         public int getCost();
         public void setCost(int cost);
         public String getMaintenanceDetails();

@@ -11,12 +11,12 @@ public class facilityUseImplement implements facilityUse{
     private LocalDate endDate;
     private Facility facility;
 
-    public FacilityUseImplement() {}
+    public facilityUseImplement() {}
 
-    public Facility getFacility() {
+    public facility getfacility() {
         return facility;
     }
-    public void setFacility(Facility facility) {
+    public void setfacility(facility facility) {
         this.facility = facility;
     }
     public int getUseID() {

@@ -1,19 +1,19 @@
 package com.Service;
 
      import com.Database.useDatabase;
-        import com.Use.*;
-        import com.Facility.*;
-        import java.util.List;
-        import java.time.*;
+     import com.Use.*;
+     import com.Facility.*;
+     import java.util.List;
+     import java.time.*;
 
-public class serviceUse {
+public class serserviceFacilityviceUse {
 
-    private UsageDAO usageDAO = new UsageDAO();
+    private useDatabase useDatabase = new useDatabase();
 
     //generates a list of inspections at a given Facility
     public List<FacilityInspection> listInspections(Facility facility) {
         try {
-            return usageDAO.listInspections(facility);
+            return useDatabase.listInspections(facility);
         } catch (Exception se) {
             System.err.println("UseService: Threw an Exception retrieving list of inspections.");
             System.err.println(se.getMessage());
@@ -33,7 +33,7 @@ public class serviceUse {
                     " rooms at this facility.");
         } else {
             try {
-                return usageDAO.isInUseDuringInterval(facilityUse);
+                return useDatabase.isInUseDuringInterval(facilityUse);
             } catch (Exception se) {
                 System.err.println("UseService: Threw an Exception checking if facility is in use during interval.");
                 System.err.println(se.getMessage());
@@ -45,7 +45,7 @@ public class serviceUse {
     //generates list of usage at a given Facility
     public List<FacilityUse> listActualUsage(Facility facility) {
         try {
-            return usageDAO.listActualUsage(facility);
+            return useDatabase.listActualUsage(facility);
         } catch (Exception se) {
             System.err.println("UseService: Threw an Exception retrieving list of usage.");
             System.err.println(se.getMessage());
@@ -68,7 +68,7 @@ public class serviceUse {
             System.out.println("This room is already in use during this interval.");
         } else {
             try {
-                usageDAO.assignFacilityToUse(facilityUse);
+                useDatabase.assignFacilityToUse(facilityUse);
             } catch (Exception se) {
                 System.err.println("UseService: Threw an Exception assigning a facility to use.");
                 System.err.println(se.getMessage());
@@ -79,7 +79,7 @@ public class serviceUse {
     //Returns the date on which a given Facility was started
     public LocalDate getFacilityStartDate(Facility facility) {
         try {
-            return usageDAO.getFacilityStartDate(facility);
+            return useDatabase.getFacilityStartDate(facility);
         } catch (Exception se) {
             System.err.println("UseService: Threw an Exception retrieving the facility start date.");
             System.err.println(se.getMessage());
@@ -102,7 +102,7 @@ public class serviceUse {
                         if ((LocalDate.now().equals(use.getStartDate())) || LocalDate.now().isAfter(use.getStartDate())) {
                             //if room is in use, vacate, else print vacate denial message
                             if ((LocalDate.now().equals(use.getEndDate())) || (LocalDate.now().isBefore(use.getEndDate()))) {
-                                usageDAO.vacateFacility(facility, roomNumber);
+                                useDatabase.vacateFacility(facility, roomNumber);
                             }
                         } else {
                             System.out.println("This room is not in use. Vacate request denied.");
@@ -136,7 +136,7 @@ public class serviceUse {
     public int requestAvailableCapacity(Facility facility) {
 
         try {
-            List<FacilityUse> usage = usageDAO.listActualUsage(facility);
+            List<FacilityUse> usage = useDatabase.listActualUsage(facility);
             int roomsInUse = 0;
             if (usage.size() > 0) {
                 for (FacilityUse facUse : usage) {

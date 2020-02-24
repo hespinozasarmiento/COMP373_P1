@@ -6,18 +6,17 @@ import com.Maintenance.maintenance;
 import com.Service.serviceMaintenance;
 
 public class maintenanceClient {
-    public class MaintenanceClient {
-        public MaintenanceClient() throws Exception {
+        public maintenanceClient() throws Exception {
 
-            MaintenanceService maintenanceService = new MaintenanceService();
+            serviceMaintenance serviceMaintenance = new serviceMaintenance();
 
             /**
              *Adding office locations for facilities.
              */
 
             //office1
-            Facility office1 = new FacilityImpl();
-            FacilityDetails office1Details = new FacilityDetailsImpl();
+            facility office1 = new facilityImplement();
+            facilityInfo office1Details = new facilityInfoImplement();
             office1.setFacilityID(1);
             office1Details.setName("Anissa Corporations");
             office1Details.setLocation("Chicago, IL");
@@ -25,8 +24,8 @@ public class maintenanceClient {
             office1.setFacilityDetail(office1Details);
 
             //office2
-            Facility office2 = new FacilityImpl();
-            FacilityDetails office2Details = new FacilityDetailsImpl();
+            facility office2 = new facilityImplement();
+            facilityInfo office2Details = new facilityInfoImplement();
             office2.setFacilityID(2);
             office2Details.setName("Irfan & Associates");
             office2Details.setLocation("Milwaukee, WI");
@@ -34,8 +33,8 @@ public class maintenanceClient {
             office2.setFacilityDetail(office2Details);
 
             //office3
-            Facility office3 = new FacilityImpl();
-            FacilityDetails office3Details = new FacilityDetailsImpl();
+            facility office3 = new facilityImplement();
+            facilityInfo office3Details = new facilityInfoImplement();
             office3.setFacilityID(3);
             office3Details.setName("Henry Inc.");
             office3Details.setLocation("New York, NY");
@@ -43,8 +42,8 @@ public class maintenanceClient {
             office3.setFacilityDetail(office3Details);
 
             //office4
-            Facility office4 = new FacilityImpl();
-            FacilityDetails office4Details = new FacilityDetailsImpl();
+            facility office4 = new facilityImplement();
+            facilityInfo office4Details = new facilityInfoImplement();
             office4.setFacilityID(4);
             office4Details.setName("Zewdie Firm");
             office4Details.setLocation("San Francisco, CA");
@@ -52,22 +51,22 @@ public class maintenanceClient {
             office4.setFacilityDetail(office4Details);
 
             //maintenance request for office1 case example
-            System.out.println("\nMaintenanceClient: Creating New Maintenance Request");
+            System.out.println("\nmaintenanceClient: Creating New Maintenance Request");
             Maintenance maintenance = maintenanceService.makeFacilityMaintRequest(office1, "Printers are not connecting to Internet.", 50);
-            System.out.println("\nMaintenanceClient: Maintenance Request has been created.");
+            System.out.println("\nmaintenanceClient: Maintenance Request has been created.");
 
             //scheduling the case example for maintenance request
-            System.out.println("\nMaintenanceClient: Scheduling Maintenance Request");
+            System.out.println("\nmaintenanceClient: Scheduling Maintenance Request");
             maintenanceService.scheduleMaintenance(maintenance);
-            System.out.println("\nMaintenanceClient: Maintenance Request has been scheduled.");
+            System.out.println("\nmaintenanceClient: Maintenance Request has been scheduled.");
 
             //adding the total cost of maintenance request at office1
-            System.out.println("\nMaintenanceClient: Estamating Total Maintenance Cost");
+            System.out.println("\nmaintenanceClient: Estamating Total Maintenance Cost");
             int totalCost = maintenanceService.calcMaintenanceCostForFacility(office1);
             System.out.println("The total cost of maintenance at Facility #" + office1.getFacilityID() + " is $" + totalCost + ".");
 
             //arranging current maintenance requests in a table using example Facilities example - the offices listed above
-            System.out.println("\nMaintenanceClient: Listing the Current Maintenance Requests at Facility");
+            System.out.println("\nmaintenanceClient: Listing the Current Maintenance Requests at Facility");
             List<Maintenance> maintRequestList = maintenanceService.listMaintRequests(office2);
             Object[][] requests = new Object[maintRequestList.size() + 1][2];
             requests[0] = new Object[]{"Maintenance Request Details", "Cost"};
@@ -120,4 +119,3 @@ public class maintenanceClient {
         }
 
     }
-}

@@ -3,16 +3,16 @@ package com.Facility;
 public class facilityImplement implements facility
 {
     private int facilityID;
-    private FacilityDetails facilityDetail;
+    private facilityInfo facilityInfo;
 
     //public FacilityImpl() {}
 
     //getters and setters
-    public FacilityDetails getFacilityDetail() {
-        return facilityDetail;
+    public facilityInfo getfacilityInfo() {
+        return facilityInfo;
     }
-    public void setFacilityDetail(FacilityDetails facilityDetail) {
-        this.facilityDetail = facilityDetail;
+    public void setfacilityInfo(facilityInfo facilityInfo) {
+        this.facilityInfo = facilityInfo;
     }
     public void setFacilityID(int facilityID) {
         this.facilityID = facilityID;

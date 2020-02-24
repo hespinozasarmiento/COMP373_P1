@@ -7,8 +7,8 @@ public class clientInterface {
 
     public static void main(String[] args) throws Exception
     {
-        FacilityClient facilityClient = new FacilityClient();
-        //MaintenanceClient maintenanceClient = new MaintenanceClient();
-        //UsageClient usageClient = new UsageClient();
+        facilityClient facilityClient = new facilityClient();
+        //maintenanceClient maintenanceClient = new maintenanceClient();
+        //useClient useClient = new ussClient();
     }
 }

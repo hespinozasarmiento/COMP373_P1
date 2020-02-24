@@ -9,7 +9,7 @@ public class maintenanceImplement implements maintenance
         private int facilityID;
         private String maintenanceDetails;
         private int cost;
-        private Facility facility;
+        private facility facility;
 
         public maintenanceImplement() {}
 
@@ -44,10 +44,10 @@ public class maintenanceImplement implements maintenance
         public void setCost(int cost) {
             this.cost = cost;
         }
-        public Facility getFacility() {
+        public facility getfacility() {
             return facility;
         }
-        public void setFacility(Facility facility) {
+        public void setfacility(facility facility) {
             this.facility = facility;
         }
 }

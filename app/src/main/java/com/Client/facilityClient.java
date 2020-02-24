@@ -8,7 +8,7 @@ public class facilityClient
 {
         public facilityClient() throws Exception {
 
-        FacilityService facilityService = new FacilityService();
+        serviceFacility serviceFacility = new serviceFacility();
 
         /**
          * Adding office locations for facilities.

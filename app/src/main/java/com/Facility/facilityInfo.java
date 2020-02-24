@@ -4,7 +4,7 @@ public interface facilityInfo
 {
     //declaring getting and setting
 
-    public Facility getFacility();
+    public facility facility();
     public String getName();
     public void setName(String name);
     public int getFacilityID();

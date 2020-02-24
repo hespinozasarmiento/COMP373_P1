@@ -7,7 +7,7 @@ public class facilityInfoImplement implements facilityInfo
     private String location;
     private int numberOfRooms;
     private long phoneNumber;
-    private Facility facility;
+    private facility facility;
 
     public facilityInfoImplement() {}
 
@@ -38,10 +38,10 @@ public class facilityInfoImplement implements facilityInfo
     public void setPhoneNumber(long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-    public Facility getFacility() {
+    public facility getfacility() {
         return facility;
     }
-    public void setFacility(Facility facility) {
+    public void setfacility(facility facility) {
         this.facility = facility;
     }
 }

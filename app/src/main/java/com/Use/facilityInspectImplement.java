@@ -9,7 +9,7 @@ public class facilityInspectionImplement implements FacilityInspection {
     private String inspection_detail;
     private Facility facility;
 
-    public afcilityInspectionImplement() {}
+    public facilityInspectionImplement() {}
 
     //getters and setters
     public Facility getFacility() {
