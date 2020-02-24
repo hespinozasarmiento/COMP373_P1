@@ -18,6 +18,10 @@ In this project, we will start providing an object domain model for Facility Man
 
 •	Make available all client interfaces/services specified in the specification document (Facility, Facility Use, and Facility Maintenance Client Interfaces).
 
+# ISSUES 
+
+After designing the UML model, we were unable to figure out the SQL connection to our database. For that reason, the client view is not fully functional. However, the code runs. The UML and our code show the plan we wanted to follow, but we unable to because of the complications we encountered. 
+
 # USEAGE
   Android Studio 3.4.1 (JAVA)
  
