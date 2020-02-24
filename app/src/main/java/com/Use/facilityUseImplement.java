@@ -9,7 +9,7 @@ public class facilityUseImplement implements facilityUse{
     private int roomNumber;
     private LocalDate startDate;
     private LocalDate endDate;
-    private Facility facility;
+    private facility facility;
 
     public facilityUseImplement() {}
 

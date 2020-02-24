@@ -1,6 +1,6 @@
 package com.Use;
 
-import com.facility.Facility;
+import com.Facility.facility;
 
 public class facilityInspectionImplement implements facilityInspect
 {
@@ -8,7 +8,7 @@ public class facilityInspectionImplement implements facilityInspect
     private int facilityID;
     private String inspect_type;
     private String inspect_detail;
-    private Facility facility;
+    private facility facility;
 
     public facilityInspectionImplement() {}
 
@@ -16,7 +16,7 @@ public class facilityInspectionImplement implements facilityInspect
     public facility getfacility() {
         return facility;
     }
-    public void setFacility(Facility facility) {
+    public void setFacility(facility facility) {
         this.facility = facility;
     }
     public int getFacilityID() {

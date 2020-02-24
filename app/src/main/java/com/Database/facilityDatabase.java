@@ -1,10 +1,10 @@
 package com.Database;
-
-
-/**
- * Modeled after CustomerDAO.java from BookStore.
- */
-
+//
+//
+///**
+// * Modeled after CustomerDAO.java from BookStore.
+// */
+//
 public class facilityDatabase
 {
     public facilityDatabase(){}
@@ -13,7 +13,7 @@ public class facilityDatabase
      * Adds a new Facility to facility_table and the new Facility's details to the facility_detail table
      * @param newFacility The new Facility that will be added to the DB
      */
-    public void addNewFacility(Facility newFacility) {
+    public void addNewFacility(facility newFacility) {
         Connection con = DBHelper.getConnection();
         PreparedStatement facPst = null;
         PreparedStatement addPst = null;

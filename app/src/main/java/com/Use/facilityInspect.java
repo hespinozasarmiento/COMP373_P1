@@ -1,6 +1,6 @@
 package com.Use;
 
-import com.facility.Facility;
+import com.Facility.facility;
 
 public class facilityInspect
 {

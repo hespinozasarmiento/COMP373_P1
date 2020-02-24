@@ -3,8 +3,8 @@ package com.Facility;
 public interface facility
 {
     //declaring getting and setting
-    public facilityInfo getFacilityDetail();
+    public facilityInfo getfacilityDetail();
     public void setfacilityInfo(facilityInfo Info);
-    public int getFacilityID();
-    public void setFacilityID(int facilityID);
+    public int getfacilityID();
+    public void setfacilityID(int facilityID);
 }

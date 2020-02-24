@@ -18,7 +18,7 @@ In this project, we will start providing an object domain model for Facility Man
 
 •	Make available all client interfaces/services specified in the specification document (Facility, Facility Use, and Facility Maintenance Client Interfaces).
 
-# USUAGE 
+# USEAGE
   Android Studio 3.4.1 (JAVA)
  
   Draw.IO (ULM Model)

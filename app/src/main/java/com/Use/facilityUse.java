@@ -1,12 +1,12 @@
 package com.Use;
 
-import com.facility.Facility;
+import com.Facility.facility;
 import java.time.LocalDate;
 
 public class facilityUse
 {
     //declaring getting and setting
-    public void setFacility(Facility facility);
+    public void setFacility(facility facility);
     public facility getfacility();
     public int getUseID();
     public void setUseID(int useID);
