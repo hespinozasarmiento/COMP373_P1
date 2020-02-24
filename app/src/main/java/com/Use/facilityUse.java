@@ -1,13 +1,13 @@
 package com.Use;
 
-import com.Facility.facility;
+import com.facility.Facility;
 import java.time.LocalDate;
 
-public interface FacilityUse {
-
-    //declaring getters and setters
+public class facilityUse
+{
+    //declaring getting and setting
     public void setFacility(Facility facility);
-    public Facility getFacility();
+    public facility getfacility();
     public int getUseID();
     public void setUseID(int useID);
     public int getFacilityID();

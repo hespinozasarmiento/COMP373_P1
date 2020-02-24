@@ -6,7 +6,7 @@ package com.Service;
      import java.util.List;
      import java.time.*;
 
-public class serserviceFacilityviceUse {
+public class serviceUse {
 
     private useDatabase useDatabase = new useDatabase();
 

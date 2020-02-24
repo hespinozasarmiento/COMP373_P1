@@ -6,7 +6,7 @@ public class facilityInspect
 {
     //declaring getting and setting
     public facility getfacility();
-    public void setfacility(facility facility);
+    public void setFacility(Facility facility);
     public int getFacilityID();
     public void setFacilityID(int facility_ID);
     public String getInspect_type();
