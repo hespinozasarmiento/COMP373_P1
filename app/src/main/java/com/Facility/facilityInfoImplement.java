@@ -38,10 +38,18 @@ public class facilityInfoImplement implements facilityInfo
     public void setPhoneNumber(long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-    public facility getfacility() {
+    public facility getFacility() {
         return facility;
     }
-    public void setfacility(facility facility) {
+    public void setFacility(facility facility) {
         this.facility = facility;
+    }
+
+
+    //Overrode this to get it to work-will need to figure it out
+    @Override
+    public com.Facility.facility facility() {
+        // TODO Auto-generated method stub
+        return null;
     }
 }

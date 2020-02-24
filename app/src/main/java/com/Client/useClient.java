@@ -57,7 +57,7 @@ public class useClient
 
             //inspection status for office4 case example
             System.out.println("\n\tInspections At Facility #" + office4.getFacilityID());
-            for (FacilityInspection inspection : useService.listInspections(office4)) {
+            for (facilityInspect inspection : serviceUse.listInspections(office4)) {
                 System.out.println("\t" + inspection.getInspection_type() +
                         " status: " + inspection.getInspection_detail());
             }
@@ -133,13 +133,13 @@ public class useClient
 
             //vacating office5
             System.out.println("\nUsageClient: Vacating Facility");
-            useService.vacateFacility(office5, 1);
+            serviceUse.vacateFacility(office5, 1);
             System.out.println("\nUsageClient: Facility has been vacated.");
 
             //check office5 usage after being vacated
             System.out.println("\nUsageClient: Calculating Facility use after being vacated");
 
-            List<FacilityUse> usageList2 = useService.listActualUsage(office5);
+            List<facilityUse> usageList2 = serviceUse.listActualUsage(office5);
             Object[][] usage2 = new Object[usageList2.size() + 1][3];
             usage2[0] = new Object[] {"Room #", "Start Date", "End Date"};
             for (int i = 1; i <= usageList2.size(); i++) {
@@ -156,10 +156,10 @@ public class useClient
 
             //getting the current use rate of a facility
             System.out.println("\nUsageClient: Calculating the current use rate of Facility");
-            int usageRate = (int) (useService.calcUsageRate(office2) * 100);
+            int usageRate = (int) (serviceUse.calcUsageRate(office2) * 100);
             System.out.println("Current use rate at Facility #" + office2.getFacilityID() + " is " + usageRate + "%.");
 
             //removes office5 so it can be tested again later
-            facilityService.removeFacility(5);
+            serviceFacility.removeFacility(5);
         }
 }

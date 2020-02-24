@@ -1,7 +1,7 @@
 package com.Service;
 
 import com.Database.facilityDatabase;
-//import com.Database.useDatabase;
+import com.Database.useDatabase;
 import com.Use.facilityUse;
 import com.Facility.facility;
 import java.time.LocalDate;
@@ -12,9 +12,9 @@ public class serviceFacility {
     private facilityDatabase facilityDatabase = new facilityDatabase();
 
     //Add new Facility to DB
-    public void addNewfacility(facility facility) {
+    public void addNewFacility(facility facility) {
         try {
-            facilityDatabase.addNewfacility(facility);
+            facilityDatabase.addNewFacility(facility);
         } catch (Exception se) {
             System.err.println("FacilityService: Threw an Exception adding new facility.");
             System.err.println(se.getMessage());
@@ -58,7 +58,7 @@ public class serviceFacility {
     //lists available Facilities
     public List<facility> listFacilities() {
         try {
-            return facilityDatabase.listfacilities();
+            return facilityDatabase.listFacilities();
         } catch (Exception se) {
             System.err.println("FacilityService: Threw an Exception retrieving list of facilities.");
             System.err.println(se.getMessage());

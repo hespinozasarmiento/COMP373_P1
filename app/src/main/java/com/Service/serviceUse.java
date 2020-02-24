@@ -11,7 +11,7 @@ public class serviceUse {
     private useDatabase useDatabase = new useDatabase();
 
     //generates a list of inspections at a given Facility
-    public List<FacilityInspection> listInspections(Facility facility) {
+    public List<facilityInspect> listInspections(facility facility) {
         try {
             return useDatabase.listInspections(facility);
         } catch (Exception se) {

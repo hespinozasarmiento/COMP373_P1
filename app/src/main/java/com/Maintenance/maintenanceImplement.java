@@ -44,10 +44,10 @@ public class maintenanceImplement implements maintenance
         public void setCost(int cost) {
             this.cost = cost;
         }
-        public facility getfacility() {
+        public facility getFacility() {
             return facility;
         }
-        public void setfacility(facility facility) {
+        public void setFacility(facility facility) {
             this.facility = facility;
         }
 }
